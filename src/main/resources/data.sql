@@ -1,8 +1,8 @@
 -- Categories
-INSERT INTO category (name)  VALUES ('American')
-INSERT INTO category (name)  VALUES ('Italian')
-INSERT INTO category (name) VALUES ('Mexican')
-INSERT INTO category (name) VALUES ('Fast Food')
+INSERT INTO category (description)  VALUES ('American')
+INSERT INTO category (description)  VALUES ('Italian')
+INSERT INTO category (description) VALUES ('Mexican')
+INSERT INTO category (description) VALUES ('Fast Food')
 
 -- Units of Measure
 INSERT INTO unit_of_measure (description) VALUES ('Teaspoon')

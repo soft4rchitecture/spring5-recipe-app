@@ -17,7 +17,7 @@ public class Category {
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   private Long id;
   @Getter
-  private String name;
+  private String description;
   @Getter
   @ManyToMany(cascade = CascadeType.ALL, mappedBy = "categories")
   private Set<Recipe> recipes;
