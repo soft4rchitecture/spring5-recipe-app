@@ -9,9 +9,11 @@ import javax.persistence.OneToOne;
 
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 @Entity
 @NoArgsConstructor
+@Setter
 public class Notes {
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)

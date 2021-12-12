@@ -1,5 +1,6 @@
 package guru.springframework.domain;
 
+import java.util.HashSet;
 import java.util.Set;
 
 import javax.persistence.CascadeType;
@@ -20,6 +21,6 @@ public class Category {
   private String description;
   @Getter
   @ManyToMany(cascade = CascadeType.ALL, mappedBy = "categories")
-  private Set<Recipe> recipes;
+  private Set<Recipe> recipes = new HashSet<>();
 
 }

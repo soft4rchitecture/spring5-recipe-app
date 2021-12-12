@@ -1,5 +1,6 @@
 package guru.springframework.domain;
 
+import java.util.HashSet;
 import java.util.Set;
 
 import javax.persistence.CascadeType;
@@ -18,8 +19,12 @@ import javax.persistence.OneToOne;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 @AllArgsConstructor
+@NoArgsConstructor
+@Setter
 @Entity
 public class Recipe {
   @Id
@@ -41,6 +46,7 @@ public class Recipe {
   private String url;
 
   @Getter
+  @Lob
   private String directions;
 
   @Getter
@@ -55,13 +61,15 @@ public class Recipe {
   @OneToOne(cascade = CascadeType.ALL)
   private Notes notes;
 
+  @Getter
   @OneToMany(cascade = CascadeType.ALL, mappedBy = "recipe")
-  private Set<Ingredient> ingredient;
+  private Set<Ingredient> ingredients = new HashSet<>();
 
+  @Getter
   @ManyToMany
   @JoinTable(//
       name = "recipe_category", //
       joinColumns = @JoinColumn(name = "recipe_id"), //
       inverseJoinColumns = @JoinColumn(name = "category_id"))
-  private Set<Category> categories;
+  private Set<Category> categories = new HashSet<>();
 }
