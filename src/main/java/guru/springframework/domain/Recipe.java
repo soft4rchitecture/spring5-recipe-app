@@ -29,6 +29,7 @@ import lombok.Setter;
 public class Recipe {
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
+  @Getter
   Long id;
 
   @Getter

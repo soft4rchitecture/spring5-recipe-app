@@ -1,13 +1,18 @@
 package guru.springframework.controllers;
 
+import java.util.HashSet;
 import java.util.Optional;
+import java.util.Set;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import guru.springframework.domain.Category;
+import guru.springframework.domain.Recipe;
 import guru.springframework.domain.UnitOfMeasure;
 import guru.springframework.repositories.CategoryRepository;
+import guru.springframework.repositories.RecipeRepository;
 import guru.springframework.repositories.UnitOfMeasureRepository;
 import lombok.AllArgsConstructor;
 
@@ -18,18 +23,14 @@ import lombok.AllArgsConstructor;
 @Controller
 public class IndexController {
 
-    private CategoryRepository categoryRepository;
-    private UnitOfMeasureRepository unitOfMeasureRepository;
+    private RecipeRepository recipesRepository;
 
     @RequestMapping({ "", "/", "/index" })
-    public String getIndexPage() {
+    public String getIndexPage(Model model) {
 
-        Optional<Category> category = this.categoryRepository.findByDescription("American");
-        Optional<UnitOfMeasure> unitOfMeasure = unitOfMeasureRepository.findByDescription("Teaspoon");
-
-        System.out.println("category description: " + category.get().getDescription());
-        System.out.println("unitOfMeasure description: " + unitOfMeasure.get().getDescription());
-
+        Set<Recipe> recipes = new HashSet<>();
+        recipesRepository.findAll().forEach(recipes::add);
+        model.addAttribute("recipes", recipes);
         return "index";
     }
 }
