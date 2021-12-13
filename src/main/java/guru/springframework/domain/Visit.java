@@ -8,11 +8,13 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
+import lombok.EqualsAndHashCode;
 import lombok.Value;
 
 @Entity
 @Table(name = "visits")
 @Value
+@EqualsAndHashCode(callSuper = false)
 public class Visit extends BaseEntity {
 
   @Column(name = "date")
