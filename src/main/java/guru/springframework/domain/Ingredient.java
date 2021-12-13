@@ -9,6 +9,7 @@ import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 
 import lombok.Getter;
+import lombok.Setter;
 
 @Entity
 public class Ingredient {
@@ -27,17 +28,15 @@ public class Ingredient {
   @ManyToOne(optional = false)
   private UnitOfMeasure unitOfMeasure;
 
+  @Setter
   @Getter
   @ManyToOne
   private Recipe recipe;
 
-
-  public Ingredient(String description, BigDecimal amount, UnitOfMeasure uom, Recipe recipe) {
+  public Ingredient(String description, BigDecimal amount, UnitOfMeasure uom) {
     this.description = description;
     this.amount = amount;
     unitOfMeasure = uom;
-    this.recipe = recipe;
-
   }
 
 }
