@@ -4,6 +4,9 @@ import guru.springframework.domain.*;
 import guru.springframework.repositories.CategoryRepository;
 import guru.springframework.repositories.RecipeRepository;
 import guru.springframework.repositories.UnitOfMeasureRepository;
+import guru.springframework.services.VisitService;
+import lombok.AllArgsConstructor;
+
 import org.springframework.context.ApplicationListener;
 import org.springframework.context.event.ContextRefreshedEvent;
 import org.springframework.stereotype.Component;
@@ -16,19 +19,14 @@ import java.util.Optional;
 /**
  * Created by jt on 6/13/17.
  */
+@AllArgsConstructor
 @Component
 public class RecipeBootstrap implements ApplicationListener<ContextRefreshedEvent> {
 
   private final CategoryRepository categoryRepository;
   private final RecipeRepository recipeRepository;
   private final UnitOfMeasureRepository unitOfMeasureRepository;
-
-  public RecipeBootstrap(CategoryRepository categoryRepository, RecipeRepository recipeRepository,
-      UnitOfMeasureRepository unitOfMeasureRepository) {
-    this.categoryRepository = categoryRepository;
-    this.recipeRepository = recipeRepository;
-    this.unitOfMeasureRepository = unitOfMeasureRepository;
-  }
+  private final VisitService visitService;
 
   @Override
   public void onApplicationEvent(ContextRefreshedEvent event) {
@@ -139,7 +137,7 @@ public class RecipeBootstrap implements ApplicationListener<ContextRefreshedEven
             "\n" +
             "\n" +
             "Read more: http://www.simplyrecipes.com/recipes/perfect_guacamole/#ixzz4jvoun5ws");
-            guacRecipe.setNotes(guacNotes);
+    guacRecipe.setNotes(guacNotes);
 
     guacRecipe.addIngredient(new Ingredient("ripe avocados", new BigDecimal(2), eachUom));
     guacRecipe.addIngredient(

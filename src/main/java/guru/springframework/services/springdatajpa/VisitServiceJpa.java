@@ -2,12 +2,14 @@ package guru.springframework.services.springdatajpa;
 
 import java.util.Set;
 
+import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Service;
 
 import guru.springframework.domain.Visit;
 import guru.springframework.services.VisitService;
 
 @Service
+@Profile("springdatajpa")
 public class VisitServiceJpa implements VisitService {
 
   @Override

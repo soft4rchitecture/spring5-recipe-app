@@ -2,12 +2,14 @@ package guru.springframework.services.map;
 
 import java.util.Set;
 
+import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Service;
 
 import guru.springframework.domain.Visit;
 import guru.springframework.services.VisitService;
 
 @Service
+@Profile({ "default", "map" })
 public class VisitServiceInMemory implements VisitService {
 
   @Override
