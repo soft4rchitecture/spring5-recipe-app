@@ -1,4 +1,4 @@
-package guru.springframework.services.map;
+package guru.springframework.services.springdatajpa;
 
 import java.util.Set;
 
@@ -8,7 +8,7 @@ import guru.springframework.domain.Visit;
 import guru.springframework.services.VisitService;
 
 @Service
-public class VisitServiceInMemory implements VisitService {
+public class VisitServiceJpa implements VisitService {
 
   @Override
   public Set<Visit> findAll() {
@@ -24,10 +24,7 @@ public class VisitServiceInMemory implements VisitService {
 
   @Override
   public Visit save(Visit visit) {
-    if (visit.getPet() == null || visit.getPet().getOwner() == null || visit.getPet().getId() == null
-        || visit.getPet().getOwner().getId() == null) {
-      throw new RuntimeException("Invalid Visit");
-    }
+    // TODO Auto-generated method stub
     return null;
   }
 
