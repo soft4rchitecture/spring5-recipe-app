@@ -16,7 +16,7 @@ import lombok.AllArgsConstructor;
 @Profile("springdatajpa")
 public class OwnerServiceJpa implements OwnerService {
 
-  private OwnerRepository ownerRepository;
+  private final OwnerRepository ownerRepository;
 
   @Override
   public Owner findByLastName(String lastname) {

@@ -16,7 +16,7 @@ import lombok.AllArgsConstructor;
 @AllArgsConstructor
 public class VetServiceJpa implements VetService {
 
-  VetRepository vetRepository;
+  private final VetRepository vetRepository;
 
   @Override
   public Set<Vet> findAll() {
