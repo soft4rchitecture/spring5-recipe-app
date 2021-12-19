@@ -18,10 +18,18 @@ jobs:
     steps:
       # Checkout the code as the first step.
       - checkout
+      - restore_cache:
+          keys:
+            - v1-dependencies-{{checksum "pom.xml"}}
+            - v1-dependencies
       # Use mvn clean and package as the standard maven build phase
       - run:
-          name: Package
-          command: mvn -B clean package
+          name: clean-verify
+          command: mvn -B clean verify
+      - save_cache:
+          paths:
+            - ~/.m2
+            - key: v1-dependencies-{{checksum "pom.xml"}}
 
 # Invoke jobs via workflows
 # See: https://circleci.com/docs/2.0/configuration-reference/#workflows
