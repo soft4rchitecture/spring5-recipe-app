@@ -36,6 +36,7 @@ local.properties
 .loadpath
 .factorypath
 /src/main/resources/rebel.xml
+.attach_pid*
 
 # External tool builders
 .externalToolBuilders/**
