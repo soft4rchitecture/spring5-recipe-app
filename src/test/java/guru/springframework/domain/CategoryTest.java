@@ -7,12 +7,12 @@ import org.junit.jupiter.api.Test;
 class CategoryTest {
 
 	private final Category category = new Category();
-	private long dATABASE_ID = 10L;
+	private final long DATABASE_ID = 10L;
 	
 	@Test
 	void getId() {
-		category.setId(dATABASE_ID );
-		assertEquals(category.getId(), dATABASE_ID );
+		category.setId(DATABASE_ID );
+		assertEquals(category.getId(), DATABASE_ID );
 	}
 
 }
